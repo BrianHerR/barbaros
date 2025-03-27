@@ -1,10 +1,7 @@
 package com.pizzeria.barbaros.model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.math.BigDecimal;
 import java.util.Set;
@@ -14,6 +11,8 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@Getter
+@Setter
 public class Product {
 
     @Id
@@ -34,7 +33,7 @@ public class Product {
     @ManyToMany
     @JoinTable(
             name = "product_ingredient",
-            joinColumns = @JoinColumn(name = "ingredient_id"),
+            joinColumns = @JoinColumn(name = "product_id"),
             inverseJoinColumns = @JoinColumn(name = "ingredient_id")
     )
     private Set<Ingredient> ingredients;
